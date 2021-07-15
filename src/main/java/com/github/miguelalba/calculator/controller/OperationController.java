@@ -27,8 +27,8 @@ public class OperationController implements ApplicationContextAware {
         this.repository = repository;
     }
 
-    /* Test with curl:
-    curl localhost:8080/operation/+/2/2
+    /* Test with curl: curl localhost:8080/operation/+/2/2
+     - With security: curl -u admin:password localhost:8080/operation/+/2/2
      */
     @Cacheable
     @GetMapping(value = "/operation/{operator}/{a}/{b}", produces = {"application/json"})
