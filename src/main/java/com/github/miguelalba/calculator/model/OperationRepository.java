@@ -1,7 +1,5 @@
 package com.github.miguelalba.calculator.model;
 
-import com.github.miguelalba.calculator.model.Operation;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
