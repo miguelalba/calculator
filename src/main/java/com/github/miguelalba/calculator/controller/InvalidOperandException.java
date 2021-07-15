@@ -1,6 +1,6 @@
-package com.github.miguelalba.calculator;
+package com.github.miguelalba.calculator.controller;
 
-class InvalidOperandException extends RuntimeException {
+public class InvalidOperandException extends RuntimeException {
 
     InvalidOperandException(int operand) {
         super("Operand must be a positive integer: " + operand);

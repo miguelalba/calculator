@@ -1,4 +1,4 @@
-package com.github.miguelalba.calculator;
+package com.github.miguelalba.calculator.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,6 +13,13 @@ public class InvalidOperandAdvice {
     @ExceptionHandler(InvalidOperandException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     String invalidOperandHandler(InvalidOperandException err) {
+        return err.getMessage();
+    }
+
+    @ResponseBody
+    @ExceptionHandler(InvalidOperatorException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    String invalidOperatorHandler(InvalidOperatorException err) {
         return err.getMessage();
     }
 }
