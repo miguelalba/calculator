@@ -1,6 +1,17 @@
 package com.github.miguelalba.calculator.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.util.Objects;
+
+@Entity
 public class Operation {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String operator;
     private int a;
@@ -8,7 +19,8 @@ public class Operation {
     private int result;
 
     // Only used by JPA (hence protected)
-    protected Operation() {}
+    protected Operation() {
+    }
 
     public Operation(String operator, int a, int b, int result) {
         this.operator = operator;
@@ -33,10 +45,6 @@ public class Operation {
         return result;
     }
 
-    public void setResult(int result) {
-        this.result = result;
-    }
-
     @Override
     public String toString() {
         return "Operation{" +
@@ -47,13 +55,20 @@ public class Operation {
                 '}';
     }
 
-//    public int calculate() {
-//        if (operator.equals("+")) {
-//            return a+b;
-//        }
-//        if (operator.equals("-")) {
-//            return a-b;
-//        }
-//        return 0;
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Operation operation = (Operation) o;
+        return a == operation.a &&
+                b == operation.b &&
+                result == operation.result &&
+                Objects.equals(id, operation.id) &&
+                Objects.equals(operator, operation.operator);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, operator, a, b, result);
+    }
 }

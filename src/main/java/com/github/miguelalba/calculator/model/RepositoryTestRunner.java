@@ -19,8 +19,15 @@ public class RepositoryTestRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+
+        // TODO: Initial 2 operations
+//        logger.info("1+1 -->" + repository.add(1, 1));
+//        logger.info("2-1 -->" + repository.substract(2, 2));
+
         logger.info(".... Fetching ops");
-        logger.info("1+1 -->" + repository.add(1, 1));
-        logger.info("2-1 -->" + repository.substract(2, 2));
+        for (Operation operation : repository.findAll()) {
+            logger.info(operation.toString());
+        }
     }
 }
